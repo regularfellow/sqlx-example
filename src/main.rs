@@ -12,7 +12,7 @@ async fn main() -> Result<(), sqlx::Error> {
     let database_url = std::env::var("DATABASE_URL").unwrap();
     let db = PgPoolOptions::new().connect(&database_url).await?;
 
-    let test = sqlx::query_as!(Test, "SELECT * FROM test")
+    let test = sqlx::query_as!(Test, "SELECT * FROM sql_example_test")
         .fetch_all(&db)
         .await?;
     println!("{:?}", test);
